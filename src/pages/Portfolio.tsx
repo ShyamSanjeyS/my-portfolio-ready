@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { AboutSection } from "@/components/about-section"
+import { ProjectsSection } from "@/components/projects-section"
+import { SkillsSection } from "@/components/skills-section"
+import { ContactSection } from "@/components/contact-section"
+import { ResumeSection } from "@/components/resume-section"
+import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export default function Portfolio() {
@@ -43,17 +48,9 @@ export default function Portfolio() {
       case 'about':
         return <AboutSection onNavigate={handleNavigate} />
       case 'projects':
-        return (
-          <div className="full-height flex items-center justify-center">
-            <h1 className="text-4xl gradient-text">Projects - Coming Soon</h1>
-          </div>
-        )
+        return <ProjectsSection onNavigate={handleNavigate} />
       case 'skills':
-        return (
-          <div className="full-height flex items-center justify-center">
-            <h1 className="text-4xl gradient-text">Skills - Coming Soon</h1>
-          </div>
-        )
+        return <SkillsSection onNavigate={handleNavigate} />
       case 'articles':
         return (
           <div className="full-height flex items-center justify-center">
@@ -67,17 +64,9 @@ export default function Portfolio() {
           </div>
         )
       case 'resume':
-        return (
-          <div className="full-height flex items-center justify-center">
-            <h1 className="text-4xl gradient-text">Resume - Coming Soon</h1>
-          </div>
-        )
+        return <ResumeSection onNavigate={handleNavigate} />
       case 'contact':
-        return (
-          <div className="full-height flex items-center justify-center">
-            <h1 className="text-4xl gradient-text">Contact - Coming Soon</h1>
-          </div>
-        )
+        return <ContactSection onNavigate={handleNavigate} />
       default:
         return <HeroSection onNavigate={handleNavigate} />
     }
@@ -102,6 +91,8 @@ export default function Portfolio() {
             </motion.div>
           </AnimatePresence>
         </main>
+        
+        <Footer onNavigate={handleNavigate} />
       </div>
     </ThemeProvider>
   )
