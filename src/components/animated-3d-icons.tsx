@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Float, Text3D, Center } from '@react-three/drei'
+import { OrbitControls, Float } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import { Suspense } from 'react'
 
@@ -47,23 +47,16 @@ export const Animated3DScene = () => {
       <Canvas camera={{ position: [5, 5, 5], fov: 60 }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
+        <directionalLight position={[-10, -10, -5]} intensity={0.3} />
         <Suspense fallback={null}>
           <FloatingCube position={[-2, 0, 0]} color="#a855f7" />
           <FloatingSphere position={[2, 0, 0]} color="#3b82f6" />
           <FloatingTorus position={[0, 2, 0]} color="#06b6d4" />
-          <Center>
-            <Text3D
-              font="/fonts/helvetiker_regular.typeface.json"
-              size={0.5}
-              height={0.1}
-              position={[0, -2, 0]}
-            >
-              DEV
-              <meshStandardMaterial color="#8b5cf6" />
-            </Text3D>
-          </Center>
+          {/* Additional floating elements */}
+          <FloatingCube position={[0, -2, 2]} color="#f59e0b" />
+          <FloatingSphere position={[-1, 1, -2]} color="#ef4444" />
         </Suspense>
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
     </motion.div>
   )
